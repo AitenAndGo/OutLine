@@ -6,6 +6,7 @@ This program is designed to find a subset of points in a two-dimensional space t
 Input:
 
 The program takes a set of points in a two-dimensional space as input. (in form of .txt file like in file points20.txt)
+
 Output:
 
 It returns a subset of points forming the convex hull with the maximum area.
