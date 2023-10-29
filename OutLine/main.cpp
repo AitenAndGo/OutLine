@@ -286,7 +286,7 @@ Point jarvisMarch(std::vector<Point>& points, Point p0, Point p) {
 	return points[index];
 
 
-	//binary search:
+	//binary search: (to do)
 	//int i = 0;
 	//int j = points.size() / 2;
 	//int k;
