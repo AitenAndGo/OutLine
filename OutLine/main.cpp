@@ -53,42 +53,24 @@ int main(void) {
 
 	if (!readFile(fileName, points)) {
 		std::cout << "\nsomething wrong with the file!!! (try \"NameOfFile.txt\")\n";
-		std::cout << "Program zakoñczy³ dzia³anie. Naciœnij dowolny klawisz, aby kontynuowaæ...";
-		char exit;
-		std::cin >> exit;
-		return 0;
+		return 1;
 	}
-
-	clock_t start = clock();
+	
 	numberOfPoints = points.size();
 
 	while (!calculateConvexHull(points, m, numberOfPoints, outLinePoints)) {
 		if (m >= numberOfPoints) {
 			std::cout << "program has failed" << std::endl;
-			std::cout << "Program zakoñczy³ dzia³anie. Naciœnij dowolny klawisz, aby kontynuowaæ...";
-			char exit;
-			std::cin >> exit;
-			return 1;
+			return 2;
 		}
 		t++;
 		m = std::min(numberOfPoints, (int)pow(2, (pow(2, t))));
 	}
 
-	clock_t end = clock(); // Koñcowy czas
-	double elapsed_time = double(end - start) / CLOCKS_PER_SEC; // Oblicz czas w sekundach
-
 	std::cout << "ConvexHull:" << std::endl;
 	for (int i = 0; i < outLinePoints.size(); i++){
 		std::cout << outLinePoints[i].x << " " << outLinePoints[i].y << std::endl;
 	}
-
-
-	std::cout << "time: " << elapsed_time << " s" << std::endl;
-
-
-	std::cout << "Program zakoñczy³ dzia³anie. Naciœnij dowolny klawisz, aby kontynuowaæ...";
-	char exit;
-	std::cin >> exit; // Oczekuje na naciœniêcie dowolnego klawisza
 
 	return 0;
 }
